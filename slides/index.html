@@ -1,106 +1,412 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>BYOC - Bring Your Own Container</title>
+    <title>BYOC - Bring Your Own Container</title>
 
-		<meta name="description" content="BYOC - Bring Your Own Container">
-		<meta name="author" content="Christian Kaltepoth">
+    <meta name="description" content="BYOC - Bring Your Own Container">
+    <meta name="author" content="Christian Kaltepoth">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
 
-	</head>
+  </head>
 
-	<body>
+  <body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
 
-				<section>
-					<h1>BYOC</h1>
-					<h3>Bring Your Own Container</h3>
-					<p>
-						<a href="http://blog.kaltepoth.de/">Christian Kaltepoth</a> /
-						<a href="http://twitter.com/chkal">@chkal</a>
-					</p>
-				</section>
+        <section>
+          <h1>BYOC</h1>
+          <h2>Bring Your Own Container</h2>
+          <p>
+            <a href="http://blog.kaltepoth.de/">Christian Kaltepoth</a> /
+            <a href="http://twitter.com/chkal">@chkal</a>
+          </p>
+        </section>
 
-				<section>
-					<h1>TODO</h1>
-				</section>
+        <section>
+          <h2>Christian Kaltepoth</h2>
+          <h3>Senior Developer @ ingenit</h3>
+          <p>
+            <a href="mailto:christian@kaltepoth.de">christian@kaltepoth.de</a> / <a href="https://twitter.com/chkal">@chkal</a>
+          </p>
+          <p>
+            <a href="http://blog.kaltepoth.de">http://blog.kaltepoth.de</a>
+          </p>
+          <aside class="notes">
+            Short Bio
+          </aside>
+        </section>
 
-				<section>
-					<h1>Vielen Dank</h1>
-					<h2>für die Aufmerksamkeit</h2>
-					<div class="mono" style="margin-top: 10%;">
-						<a href="https://github.com/chkal/backset">
-							https://github.com/chkal/backset
-						</a>
-						<a href="https://github.com/chkal/javaland15-byoc">
-							https://github.com/chkal/javaland15-byoc
-						</a>
-					</div>
-					<div style="margin-top: 5%;">
-						<a href="http://blog.kaltepoth.de/">Christian Kaltepoth</a> /
-						<a href="http://twitter.com/chkal">@chkal</a>
-					</div>
-				</section>
+        <section>
+          <h1>Java EE</h1>
+          <h2>Classic Approach</h2>
+          <aside class="notes">
+            <ul>
+              <li>1999 = 16y</li>
+              <li>Definiert APIs</li>
+              <li>Laufzeitumgebung = App Server</li>
+            </ul>
+          </aside>
+        </section>
 
-			</div>
+        <section>
+          <h1>App Servers</h1>
+          <aside class="notes">
+            <ul>
+              <li>Verschiedene Anbieter</li>
+              <li>Laufzumg für viele Apps</li>
+              <li>Infrastruktur</li>
+            </ul>
+          </aside>
+        </section>
 
-		</div>
+        <section>
+          <h1>Infrastructure</h1>
+          <ul>
+            <li>Logging</li>
+            <li>Clustering</li>
+            <li>Monitoring</li>
+            <li>2PC TX</li>
+            <li>Configuration</li>
+            <li>Deployment</li>
+            <li>...</li>
+          </ul>
+        </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <section>
+          <h1>HOWTO</h1>
+          <h1>Java EE Apps</h1>
+          <aside class="notes">
+            <ul>
+              <li>Anwendungsentwicklung</li>
+              <li>3 Schritte</li>
+            </ul>
+          </aside>
+        </section>
 
-		<script>
+        <section>
+          <h1>Write Code</h1>
+            <pre><code class="java" data-trim>
+@Stateless
+public class MyService {
 
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: false,
-				progress: true,
-				history: true,
-				center: true,
-				overview: false,
-				slideNumber: true,
+  @PersistenceContext
+  private EntityManager entityManager;
 
-				transition: 'fade', // none/fade/slide/convex/concave/zoom
+  @TransactionalAttribute(..)
+  public void doStuff() {
+    // business logic
+  }
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+}
+            </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>JEE APIs</li>
+              <li>Less dependencies</li>
+            </ul>
+          </aside>
+        </section>
 
-		</script>
+        <section>
+          <h1>Package</h1>
+          <pre><code class="java" data-trim>
+$ mvn package
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] Building sample 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO]
+.....
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.460s
+[INFO] Finished at: Fri Mar 06 08:12:01 CET 2015
+[INFO] Final Memory: 18M/200M
+[INFO] ------------------------------------------------------------------------
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Packaging</li>
+              <li>JAR / WAR / EAR</li>
+            </ul>
+          </aside>
+        </section>
 
-	</body>
+        <section>
+          <h1>Deploy</h1>
+          <pre><code class="bash" data-trim-disable>
+$ cp target/myapp.war \
+      ~/wildfly-8.2.0.Final/standalone/deployments/
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>...</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Works great!</h1>
+          <h1 class="fragment">But...</h1>
+        </section>
+
+        <section>
+          <h1>ClassLoader Hell</h1>
+          <aside class="notes">
+            <ul>
+              <li>Mehrere Apps pro Server</li>
+              <li>Classloader Isolation</li>
+              <li>Kann besonders bei EARs schwierig werden</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>App Server</h1>
+          <h2>Release Cycles</h2>
+          <aside class="notes">
+            <ul>
+              <li>Langsame Releasezyklen</li>
+              <li>Koordination zwischen Projekten?</li>
+              <li>Festgelegt auf Library Versionen</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>App Server Setup</h1>
+          <aside class="notes">
+            <ul>
+              <li>Kann aufwendig sein</li>
+              <li>Aufwand für Entwickler</li>
+              <li>Overhead für Microservices</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>App Server</h1>
+          <h2>Overloaded</h2>
+          <aside class="notes">
+            <ul>
+              <li>Mehr angeboten als genutzt</li>
+              <li>Potentielle Probleme...</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Alternatives?</h1>
+        </section>
+
+        <section>
+          <h1 id="containerless1">Containerless</h1>
+          <h1 id="containerless2" class="fragment">Less Container</h1>
+          <script type="application/javascript">
+            document.addEventListener("DOMContentLoaded", function (event) {
+              Reveal.addEventListener('fragmentshown', function (event) {
+                if(event.fragment.id === 'containerless2') {
+                  document.getElementById('containerless1').style['text-decoration'] = "line-through";
+                }
+              });
+            });
+          </script>
+        </section>
+
+        <section>
+          <h1>Application</h1>
+          <h1 class="fragment">=</h1>
+          <h1 class="fragment">Container + Code</h1>
+          <aside class="notes">
+            Self-contained application
+          </aside>
+        </section>
+
+        <section>
+          <h1>Why?</h1>
+        </section>
+
+        <section>
+          <h1>1 JVM = 1 App = 1 CL</h1>
+          <aside class="notes">
+            Simpler World
+          </aside>
+        </section>
+
+        <section>
+          <h1>Flexibility</h1>
+          <aside class="notes">
+            Minor version updates
+          </aside>
+        </section>
+
+        <section>
+          <h1>Simpler</h1>
+          <h1>Setup/Deployment</h1>
+          <aside class="notes">
+            <ul>
+              <li>Simple JAR Packaging</li>
+              <li>Deployment = ????</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Run/Debug</h1>
+          <h1>in your IDE</h1>
+          <aside class="notes">
+            <ul>
+              <li>Also in classic.</li>
+              <li>But simpler</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Frameworks</h1>
+        </section>
+
+        <section>
+          <img src="images/dropwizard-hat.png" alt="dropwizard" />
+          <h1>Dropwizard</h1>
+          <a href="http://dropwizard.io/">http://dropwizard.io/</a>
+        </section>
+
+        <section>
+          <img src="images/spring-boot-icon-large.png" alt="springboot" />
+          <h1>Spring Boot</h1>
+          <a href="http://projects.spring.io/spring-boot/">http://projects.spring.io/spring-boot/</a>
+        </section>
+
+        <section>
+          <h1>And others...</h1>
+        </section>
+
+        <section>
+          <h1>Backset</h1>
+          <a href="https://github.com/chkal/backset">https://github.com/chkal/backset</a>
+        </section>
+
+        <section>
+          <h1>JavaEE APIS</h1>
+          <h3 class="fragment">
+            CDI&#160;1.2, JPA&#160;2.1, JAX-RS&#160;2.0, Servlet&#160;3.1,
+            JSP&#160;2.3, EL&#160;3.0, JSF&#160;2.2, JDBC, JNDI, ...
+          </h3>
+        </section>
+
+        <section>
+          <h1>Framworks</h1>
+          <h3 class="fragment">
+            Hibernate, Jersey, Weld, Undertow, Jastow,
+            MyFaces, BoneCP, ...
+          </h3>
+        </section>
+
+        <section>
+          <h1>Executable FAT JAR</h1>
+          <pre><code data-trim-disable="">
+            $ mvn package
+              [...]
+            $ java -jar target/myapp.jar
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>YAML Config</h1>
+          <pre><code class="nohighlight" data-trim>
+undertow:
+  connectors:
+    - type: http
+      port: 8080
+logging:
+  level: INFO
+  loggers:
+    de.chkal.backset: DEBUG
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>DEMO</h1>
+        </section>
+
+        <section>
+          <h1>Vielen Dank</h1>
+          <h2>für die Aufmerksamkeit</h2>
+          <div class="mono" style="margin-top: 10%;">
+            <a href="https://github.com/chkal/backset">
+              https://github.com/chkal/backset
+            </a>
+            <a href="https://github.com/chkal/javaland15-byoc">
+              https://github.com/chkal/javaland15-byoc
+            </a>
+          </div>
+          <div style="margin-top: 5%;">
+            <a href="http://blog.kaltepoth.de/">Christian Kaltepoth</a> /
+            <a href="http://twitter.com/chkal">@chkal</a>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        overview: false,
+        slideNumber: true,
+
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true },
+          { src: 'plugin/notes/notes.js', async: true }
+        ]
+      });
+
+    </script>
+
+  </body>
 </html>

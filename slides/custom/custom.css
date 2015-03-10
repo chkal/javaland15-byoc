@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'DIN';
+  font-style: normal;
+  font-weight: 400;
+  src: url(ff_din_medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'SourceCodePro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(SourceCodePro-Medium.ttf) format('truetype');
+}
+
+.reveal pre {
+  font-family: "SourceCodePro", monospace;
+  width: 100%;
+  font-size: 0.8em;
+}
+
+.reveal pre code {
+  font-family: inherit;
+  padding: 1.2em 1.3em;
+  max-height: 500px;
+  overflow: hidden;
+}

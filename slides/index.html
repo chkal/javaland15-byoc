@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="custom/custom.css">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -98,8 +99,8 @@
         </section>
 
         <section>
-          <h1>HOWTO</h1>
           <h1>Java EE Apps</h1>
+          <h2>In 3 steps</h2>
           <aside class="notes">
             <ul>
               <li>Anwendungsentwicklung</li>
@@ -109,18 +110,18 @@
         </section>
 
         <section>
-          <h1>Write Code</h1>
+          <h1>#1: Write Code</h1>
             <pre><code class="java" data-trim>
 @Stateless
 public class MyService {
 
-  @PersistenceContext
-  private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-  @TransactionalAttribute(..)
-  public void doStuff() {
-    // business logic
-  }
+    @TransactionalAttribute(MANDATORY)
+    public void doStuff() {
+        // business logic
+    }
 
 }
             </code></pre>
@@ -133,23 +134,18 @@ public class MyService {
         </section>
 
         <section>
-          <h1>Package</h1>
-          <pre><code class="java" data-trim>
+          <h1>#2: Package</h1>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
 $ mvn package
 [INFO] Scanning for projects...
-[INFO]
-[INFO] ------------------------------------------------------------------------
-[INFO] Building sample 1.0-SNAPSHOT
-[INFO] ------------------------------------------------------------------------
-[INFO]
 .....
-[INFO] ------------------------------------------------------------------------
+[INFO] ----------------------------------------------
 [INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
+[INFO] ----------------------------------------------
 [INFO] Total time: 6.460s
 [INFO] Finished at: Fri Mar 06 08:12:01 CET 2015
 [INFO] Final Memory: 18M/200M
-[INFO] ------------------------------------------------------------------------
+[INFO] ----------------------------------------------
           </code></pre>
           <aside class="notes">
             <ul>
@@ -160,10 +156,10 @@ $ mvn package
         </section>
 
         <section>
-          <h1>Deploy</h1>
-          <pre><code class="bash" data-trim-disable>
-$ cp target/myapp.war \
-      ~/wildfly-8.2.0.Final/standalone/deployments/
+          <h1>#3: Deploy</h1>
+          <pre><code class="bash" data-trim>
+$ cp target/myapp.war
+  ~/wildfly-8.2.0.Final/standalone/deployments/
           </code></pre>
           <aside class="notes">
             <ul>
@@ -332,20 +328,23 @@ $ cp target/myapp.war \
 
         <section>
           <h1>Executable FAT JAR</h1>
-          <pre><code data-trim-disable="">
-            $ mvn package
-              [...]
-            $ java -jar target/myapp.jar
+          <pre style="width: 90%; font-size: 1em;"><code data-trim>
+$ mvn package
+
+  [...]
+
+$ java -jar target/myapp.jar
           </code></pre>
         </section>
 
         <section>
           <h1>YAML Config</h1>
-          <pre><code class="nohighlight" data-trim>
+          <pre style="width: 80%; font-size: 1em;"><code class="nohighlight" data-trim>
 undertow:
   connectors:
     - type: http
       port: 8080
+
 logging:
   level: INFO
   loggers:

@@ -50,7 +50,7 @@
 
         <section>
           <h2>Christian Kaltepoth</h2>
-          <h3>Senior Developer @ ingenit</h3>
+          <h2>Senior Developer @ ingenit</h2>
           <p>
             <a href="mailto:christian@kaltepoth.de">christian@kaltepoth.de</a> / <a href="https://twitter.com/chkal">@chkal</a>
           </p>
@@ -58,7 +58,9 @@
             <a href="http://blog.kaltepoth.de">http://blog.kaltepoth.de</a>
           </p>
           <aside class="notes">
-            Short Bio
+            <ul>
+              <li>Short Bio</li>
+            </ul>
           </aside>
         </section>
 
@@ -69,7 +71,7 @@
             <ul>
               <li>1999 = 16y</li>
               <li>Definiert APIs</li>
-              <li>Laufzeitumgebung = App Server</li>
+              <li>Runtime = App Server</li>
             </ul>
           </aside>
         </section>
@@ -87,15 +89,17 @@
 
         <section>
           <h1>Infrastructure</h1>
-          <ul>
-            <li>Logging</li>
-            <li>Clustering</li>
-            <li>Monitoring</li>
-            <li>2PC TX</li>
-            <li>Configuration</li>
-            <li>Deployment</li>
-            <li>...</li>
-          </ul>
+          <aside class="notes">
+            <ul>
+              <li>Logging</li>
+              <li>Clustering</li>
+              <li>Monitoring</li>
+              <li>2PC TX</li>
+              <li>Configuration</li>
+              <li>Deployment</li>
+              <li>...</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -135,7 +139,7 @@ public class MyService {
 
         <section>
           <h1>#2: Package</h1>
-          <pre style="width: 100%; font-size: 0.7em;"><code class="java" data-trim>
+          <pre style="width: 100%; font-size: 0.7em;"><code class="nohighlight" data-trim>
 $ mvn package
 [INFO] Scanning for projects...
 .....
@@ -146,6 +150,9 @@ $ mvn package
 [INFO] Finished at: Fri Mar 06 08:12:01 CET 2015
 [INFO] Final Memory: 18M/200M
 [INFO] ----------------------------------------------
+
+$ ls -sh target/*.war
+968K target/myapp.war
           </code></pre>
           <aside class="notes">
             <ul>
@@ -157,7 +164,7 @@ $ mvn package
 
         <section>
           <h1>#3: Deploy</h1>
-          <pre><code class="bash" data-trim>
+          <pre><code class="nohighlight" data-trim>
 $ cp target/myapp.war
   ~/wildfly-8.2.0.Final/standalone/deployments/
           </code></pre>
@@ -185,8 +192,7 @@ $ cp target/myapp.war
         </section>
 
         <section>
-          <h1>App Server</h1>
-          <h2>Release Cycles</h2>
+          <h1>Release Cycles</h1>
           <aside class="notes">
             <ul>
               <li>Langsame Releasezyklen</li>
@@ -197,7 +203,12 @@ $ cp target/myapp.war
         </section>
 
         <section>
-          <h1>App Server Setup</h1>
+          <h1>Hot Deployment</h1>
+        </section>
+
+        <section>
+          <h1>App Server</h1>
+          <h1>Setup</h1>
           <aside class="notes">
             <ul>
               <li>Kann aufwendig sein</li>
@@ -208,30 +219,32 @@ $ cp target/myapp.war
         </section>
 
         <section>
-          <h1>App Server</h1>
-          <h2>Overloaded</h2>
-          <aside class="notes">
-            <ul>
-              <li>Mehr angeboten als genutzt</li>
-              <li>Potentielle Probleme...</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section>
           <h1>Alternatives?</h1>
         </section>
 
-        <section>
-          <h1 id="containerless1">Containerless</h1>
-          <h1 id="containerless2" class="fragment">Less Container</h1>
+        <section id="containerless">
+          <h1 id="containerless-header">Containerless</h1>
+          <span id="containerless-strike" class="fragment"></span>
+          <h1 class="fragment">Less Container</h1>
           <script type="application/javascript">
             document.addEventListener("DOMContentLoaded", function (event) {
+
               Reveal.addEventListener('fragmentshown', function (event) {
-                if(event.fragment.id === 'containerless2') {
-                  document.getElementById('containerless1').style['text-decoration'] = "line-through";
+                if(event.fragment.id === 'containerless-strike') {
+                  var header = document.getElementById('containerless-header');
+                  header.style['text-decoration'] = "line-through";
+                  header.style['color'] = "red";
                 }
               });
+
+              Reveal.addEventListener('slidechanged', function (event) {
+                if(event.currentSlide.id === 'containerless') {
+                  var header = document.getElementById('containerless-header');
+                  header.style['text-decoration'] = "none";
+                  header.style['color'] = "inherit";
+                }
+              });
+
             });
           </script>
         </section>
@@ -286,11 +299,11 @@ $ cp target/myapp.war
         </section>
 
         <section>
-          <h1>Frameworks</h1>
+          <h1>Examples?</h1>
         </section>
 
         <section>
-          <img src="images/dropwizard-hat.png" alt="dropwizard" />
+          <img src="images/dropwizard-hat.png" alt="dropwizard" height="360" />
           <h1>Dropwizard</h1>
           <a href="http://dropwizard.io/">http://dropwizard.io/</a>
         </section>
@@ -311,7 +324,7 @@ $ cp target/myapp.war
         </section>
 
         <section>
-          <h1>JavaEE APIS</h1>
+          <h1>JavaEE APIs</h1>
           <h3 class="fragment">
             CDI&#160;1.2, JPA&#160;2.1, JAX-RS&#160;2.0, Servlet&#160;3.1,
             JSP&#160;2.3, EL&#160;3.0, JSF&#160;2.2, JDBC, JNDI, ...
@@ -319,8 +332,8 @@ $ cp target/myapp.war
         </section>
 
         <section>
-          <h1>Framworks</h1>
-          <h3 class="fragment">
+          <h1>Kudos to</h1>
+          <h3>
             Hibernate, Jersey, Weld, Undertow, Jastow,
             MyFaces, BoneCP, ...
           </h3>
@@ -328,7 +341,7 @@ $ cp target/myapp.war
 
         <section>
           <h1>Executable FAT JAR</h1>
-          <pre style="width: 90%; font-size: 1em;"><code data-trim>
+          <pre style="width: 90%; font-size: 1em;"><code class="nohighlight" data-trim>
 $ mvn package
 
   [...]

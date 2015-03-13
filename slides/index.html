@@ -59,19 +59,21 @@
           </p>
           <aside class="notes">
             <ul>
-              <li>Short Bio</li>
+              <li>Short bio</li>
             </ul>
           </aside>
         </section>
 
         <section>
           <h1>Java EE</h1>
-          <h2>Classic Approach</h2>
+            <h2>Classic Approach</h2>
           <aside class="notes">
             <ul>
-              <li>1999 = 16y</li>
-              <li>Definiert APIs</li>
-              <li>Runtime = App Server</li>
+              <li>Plattform für Enterprise Apps</li>
+              <li>Middleware</li>
+              <li>Standard APIs</li>
+              <li>EE 1.0: 1999 = 16y</li>
+              <li>-> App Servers</li>
             </ul>
           </aside>
         </section>
@@ -80,9 +82,11 @@
           <h1>App Servers</h1>
           <aside class="notes">
             <ul>
-              <li>Verschiedene Anbieter</li>
-              <li>Laufzumg für viele Apps</li>
-              <li>Infrastruktur</li>
+              <li>Versch. Anbieter</li>
+              <li>JBoss Wildfly/EAP, Glassfish, TomEE </li>
+              <li>IBM Websphere, Oracle WebLogic</li>
+              <li>Laufzeitumg. viele Apps</li>
+              <li>-> Bietet Infrastruktur</li>
             </ul>
           </aside>
         </section>
@@ -107,7 +111,7 @@
           <h2>In 3 steps</h2>
           <aside class="notes">
             <ul>
-              <li>Anwendungsentwicklung</li>
+              <li>Entwicklungsprozess</li>
               <li>3 Schritte</li>
             </ul>
           </aside>
@@ -131,8 +135,9 @@ public class MyService {
             </code></pre>
           <aside class="notes">
             <ul>
-              <li>JEE APIs</li>
-              <li>Less dependencies</li>
+              <li>Anwendung entwickeln</li>
+              <li>Verwendung der APIs</li>
+              <li>Wenige Abhängigkeiten</li>
             </ul>
           </aside>
         </section>
@@ -156,8 +161,10 @@ $ ls -sh target/*.war
           </code></pre>
           <aside class="notes">
             <ul>
-              <li>Packaging</li>
+              <li>In Archiv verpacken</li>
               <li>JAR / WAR / EAR</li>
+              <li>Maven / Ant</li>
+              <li>Üblicherweise klein</li>
             </ul>
           </aside>
         </section>
@@ -170,7 +177,10 @@ $ cp target/myapp.war
           </code></pre>
           <aside class="notes">
             <ul>
-              <li>...</li>
+              <li>Deployment</li>
+              <li>Häufig "nur" kopieren</li>
+              <li>Oder Deployment API</li>
+              <li>Hot Deployment möglich</li>
             </ul>
           </aside>
         </section>
@@ -178,15 +188,24 @@ $ cp target/myapp.war
         <section>
           <h1>Works great!</h1>
           <h1 class="fragment">But...</h1>
+          <aside class="notes">
+            <ul>
+              <li>Funktioniert gut</li>
+              <li>-> Aber: Nachteile</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h1>ClassLoader Hell</h1>
           <aside class="notes">
             <ul>
-              <li>Mehrere Apps pro Server</li>
-              <li>Classloader Isolation</li>
-              <li>Kann besonders bei EARs schwierig werden</li>
+              <li>Ursache: Wunsch viele Apps</li>
+              <li>Isolation von Apps</li>
+              <li>Und vom Server</li>
+              <li>ClassNotFound / ClassCast</li>
+              <li>Problemkandidat: EARs</li>
+              <li>P: Schwer zu debuggen</li>
             </ul>
           </aside>
         </section>
@@ -195,15 +214,27 @@ $ cp target/myapp.war
           <h1>Release Cycles</h1>
           <aside class="notes">
             <ul>
-              <li>Langsame Releasezyklen</li>
-              <li>Koordination zwischen Projekten?</li>
-              <li>Festgelegt auf Library Versionen</li>
+              <li>Releasezyklen AS</li>
+              <li>Üblicherweise langsam</li>
+              <li>&gt; 1 Jahr</li>
+              <li>Koordination zw Projekten!</li>
+              <li>P: Warten neue Tech</li>
+              <li>P: Festgelegt auf Versionen</li>
             </ul>
           </aside>
         </section>
 
         <section>
           <h1>Hot Deployment</h1>
+          <aside class="notes">
+            <ul>
+              <li>Argument für AS</li>
+              <li>Updates zur Laufzeit</li>
+              <li>Realität schwierig</li>
+              <li>Resource/CL Leaks</li>
+              <li>?Wer macht es?</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -211,21 +242,30 @@ $ cp target/myapp.war
           <h1>Setup</h1>
           <aside class="notes">
             <ul>
-              <li>Kann aufwendig sein</li>
+              <li>App nicht alleine lauffähig</li>
+              <li>Aufsetzten AS nötig</li>
+              <li>In Prod nicht schlimm</li>
               <li>Aufwand für Entwickler</li>
-              <li>Overhead für Microservices</li>
+              <li>Buzzword: Microservices</li>
+              <li>Overhead für kleinst Services</li>
             </ul>
           </aside>
         </section>
 
         <section>
           <h1>Alternatives?</h1>
+          <aside class="notes">
+            <ul>
+              <li>Klassisch = App Servers</li>
+              <li>Was sind Alternativen?</li>
+            </ul>
+          </aside>
         </section>
 
         <section id="containerless">
           <h1 id="containerless-header">Containerless</h1>
           <span id="containerless-strike" class="fragment"></span>
-          <h1 class="fragment">Less Container</h1>
+          <h1 class="fragment">Embedded Container</h1>
           <script type="application/javascript">
             document.addEventListener("DOMContentLoaded", function (event) {
 
@@ -247,32 +287,64 @@ $ cp target/myapp.war
 
             });
           </script>
+          <aside class="notes">
+            <ul>
+              <li>Buzzword: Containerless</li>
+              <li>-> Nicht korrekt</li>
+              <li>-> Einbetten des Containers</li>
+              <li>-> Umkehrung der Denkweise</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h1>Application</h1>
           <h1 class="fragment">=</h1>
-          <h1 class="fragment">Container + Code</h1>
+          <h1 class="fragment">Code + Container</h1>
           <aside class="notes">
-            Self-contained application
+            <ul>
+              <li>Applikation nicht nur Code</li>
+              <li>-> Zwei Bestandteile</li>
+              <li>Applikationscode + Runtime</li>
+              <li>Einbetten des Containers</li>
+              <li>Start via main()</li>
+              <li>Self contained</li>
+            </ul>
           </aside>
         </section>
 
         <section>
           <h1>Why?</h1>
+          <aside class="notes">
+            <ul>
+              <li>Lohnt der Aufwand?</li>
+              <li>Ja!</li>
+              <li>Viele Vorteile!</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h1>1 JVM = 1 App = 1 CL</h1>
           <aside class="notes">
-            Simpler World
+            <ul>
+              <li>Einfachere Welt!</li>
+              <li>EIN ClassLoader!</li>
+              <li>Statische Variablen! :)</li>
+              <li>Kontrolle über Memory</li>
+            </ul>
           </aside>
         </section>
 
         <section>
           <h1>Flexibility</h1>
           <aside class="notes">
-            Minor version updates
+            <ul>
+              <li>Flexibilität</li>
+              <li>Komponenten &amp; Versionen</li>
+              <li>Updates einfacher</li>
+              <li>Kein Mehraufwand beim Deployment</li>
+            </ul>
           </aside>
         </section>
 
@@ -281,8 +353,8 @@ $ cp target/myapp.war
           <h1>Setup/Deployment</h1>
           <aside class="notes">
             <ul>
-              <li>Simple JAR Packaging</li>
-              <li>Deployment = ????</li>
+              <li>Kein Setup des App Servers</li>
+              <li>Lediglich Konfiguration bleibt</li>
             </ul>
           </aside>
         </section>
@@ -292,35 +364,61 @@ $ cp target/myapp.war
           <h1>in your IDE</h1>
           <aside class="notes">
             <ul>
-              <li>Also in classic.</li>
-              <li>But simpler</li>
+              <li>Main() Methode starten</li>
+              <li>Keine weiteren Anforderungen</li>
             </ul>
           </aside>
         </section>
 
         <section>
           <h1>Examples?</h1>
+          <aside class="notes">
+            <ul>
+              <li>Klingt gut.</li>
+              <li>Einbetten nicht trival.</li>
+              <li>Frameworks?</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <img src="images/dropwizard-hat.png" alt="dropwizard" height="360" />
           <h1>Dropwizard</h1>
           <a href="http://dropwizard.io/">http://dropwizard.io/</a>
+          <aside class="notes">
+            <ul>
+              <li>Populär Microservices</li>
+              <li>Spezialisert: REST Services</li>
+              <li>Config, Monitoring, TX</li>
+              <li>Jetty, Jersey, Jackson, Hibernate</li>
+              <li>Executable Fat JAR</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <img src="images/spring-boot-icon-large.png" alt="springboot" />
           <h1>Spring Boot</h1>
           <a href="http://projects.spring.io/spring-boot/">http://projects.spring.io/spring-boot/</a>
-        </section>
-
-        <section>
-          <h1>And others...</h1>
+          <aside class="notes">
+            <ul>
+              <li>Spring Framework</li>
+              <li>...</li>
+              <li>Executable Fat JAR</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h1>Backset</h1>
           <a href="https://github.com/chkal/backset">https://github.com/chkal/backset</a>
+          <aside class="notes">
+            <ul>
+              <li>Mein Projekt</li>
+              <li>Gestartet vor 1/2 Jahr</li>
+              <li>Warum? Es gibt doch schon Projekte!</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -329,25 +427,52 @@ $ cp target/myapp.war
             CDI&#160;1.2, JPA&#160;2.1, JAX-RS&#160;2.0, Servlet&#160;3.1,
             JSP&#160;2.3, EL&#160;3.0, JSF&#160;2.2, JDBC, JNDI, ...
           </h3>
+          <aside class="notes">
+            <ul>
+              <li>Ziel: JavaEE APIs</li>
+              <li>Web Profile</li>
+              <li>-> Ziel *fast* erreicht</li>
+              <li>Natürlich nicht selfmade</li>
+              <li>-> Bewährte Project</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h1>Kudos to</h1>
           <h3>
             Hibernate, Jersey, Weld, Undertow, Jastow,
-            MyFaces, BoneCP, ...
+            MyFaces, BoneCP, Logback, ...
           </h3>
+          <aside class="notes">
+            <ul>
+              <li>Aufgabe: Integration</li>
+              <li>Modularität</li>
+              <li>Pick what you want</li>
+              <li>Beispiel: JSF mit/ohne CDI</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
           <h1>Executable FAT JAR</h1>
           <pre style="width: 90%; font-size: 1em;"><code class="nohighlight" data-trim>
 $ mvn package
+[...]
 
-  [...]
+$ ls -sh target/*.jar
+30M target/myapp.jar
 
 $ java -jar target/myapp.jar
           </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Ziel: Executable Fat JAR</li>
+              <li>Beispiel...</li>
+              <li>Herausforderung:</li>
+              <li>Gleiche Files (beans.xml)</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -363,6 +488,15 @@ logging:
   loggers:
     de.chkal.backset: DEBUG
           </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Konfiguration</li>
+              <li>YAML Files</li>
+              <li>Eigene Einträge möglich</li>
+              <li>Classpath Default</li>
+              <li>Optionales Argument</li>
+            </ul>
+          </aside>
         </section>
 
         <section>

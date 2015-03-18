@@ -269,6 +269,12 @@ $ cp target/myapp.war
           <script type="application/javascript">
             document.addEventListener("DOMContentLoaded", function (event) {
 
+              if(window.location.search.match( /print-pdf/gi )) {
+                var header = document.getElementById('containerless-header');
+                header.style['text-decoration'] = "line-through";
+                header.style['color'] = "red";
+              }
+
               Reveal.addEventListener('fragmentshown', function (event) {
                 if(event.fragment.id === 'containerless-strike') {
                   var header = document.getElementById('containerless-header');

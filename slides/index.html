@@ -510,8 +510,30 @@ logging:
         </section>
 
         <section>
-          <h1>Vielen Dank</h1>
-          <h2>für die Aufmerksamkeit</h2>
+          <h2>Keep an eye on</h2>
+          <h1>Apache TomEE</h1>
+        </section>
+
+        <section>
+          <h1>ApplicationComposers</h1>
+          <pre style="width: 100%; font-size: 0.8em;"><code class="java" data-trim>
+
+@EnableServices(jaxrs = true)
+@Classes(context = "/", value = {
+         MyResource.class, MyService.class })
+public class MyApp {
+
+  public static void main(String[] args) {
+    ApplicationComposers.run(MyApp.class, args);
+  }
+
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Thanks!</h1>
+          <h2>Questions?</h2>
           <div class="mono" style="margin-top: 10%;">
             <a href="https://github.com/chkal/backset">
               https://github.com/chkal/backset

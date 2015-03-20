@@ -6,7 +6,7 @@
 
     <non-jta-data-source>java:/comp/env/TodoDataSource</non-jta-data-source>
 
-    <class>de.chkal.backset.showcase.todo.model.Item</class>
+    <class>de.chkal.todo.model.Item</class>
 
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="create-drop" />

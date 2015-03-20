@@ -1,4 +1,4 @@
-package de.chkal.backset.showcase.todo.service;
+package de.chkal.todo.service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

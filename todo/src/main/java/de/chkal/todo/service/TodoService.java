@@ -1,11 +1,13 @@
-package de.chkal.backset.showcase.todo.service;
+package de.chkal.todo.service;
 
-import de.chkal.backset.showcase.todo.model.Item;
+import de.chkal.todo.model.Item;
+
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+
 import java.util.List;
 
 @ApplicationScoped

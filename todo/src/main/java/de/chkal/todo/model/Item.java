@@ -1,4 +1,4 @@
-package de.chkal.backset.showcase.todo.model;
+package de.chkal.todo.model;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;

@@ -2,11 +2,11 @@
 logging:
   level: INFO
   loggers:
-    de.chkal.backset: DEBUG
+    de.chkal.todo: DEBUG
 
 weld:
   packages:
-    - de.chkal.backset.showcase.todo
+    - de.chkal.todo
     - org.apache.deltaspike
 
 bonecp:

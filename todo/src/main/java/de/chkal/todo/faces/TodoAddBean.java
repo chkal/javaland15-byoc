@@ -1,11 +1,11 @@
-package de.chkal.backset.showcase.todo.faces;
+package de.chkal.todo.faces;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.chkal.backset.showcase.todo.model.Item;
-import de.chkal.backset.showcase.todo.service.TodoService;
+import de.chkal.todo.model.Item;
+import de.chkal.todo.service.TodoService;
 
 @Named
 @RequestScoped

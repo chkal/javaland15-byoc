@@ -1,0 +1,7 @@
+
+# Bind HTTP connector to port 9999
+undertow:
+  connectors:
+    - type: http
+      port: 9999
+

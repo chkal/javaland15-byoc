@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>BYOC - Bring Your Own Container</title>
+    <title>BYOC</title>
 
     <meta name="description" content="BYOC - Bring Your Own Container">
     <meta name="author" content="Christian Kaltepoth">
@@ -46,6 +46,16 @@
             <a href="http://blog.kaltepoth.de/">Christian Kaltepoth</a> /
             <a href="http://twitter.com/chkal">@chkal</a>
           </p>
+          <aside class="notes">
+            <ul>
+              <li>Willkommen</li>
+              <li>JavaLand Talk</li>
+              <li>Bring Your Own Container</li>
+              <li>... Interesse am Thema</li>
+              <li>... fürs Thema begeistern</li>
+              <li>--> Bevor es los geht</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -59,7 +69,12 @@
           </p>
           <aside class="notes">
             <ul>
-              <li>Short bio</li>
+              <li>Viele Jahre im JEE Umfeld</li>
+              <li>Aktuell ingenit Dortmund</li>
+              <li>Webbas. Unternehmensanw.</li>
+              <li>Hinter der Firewall</li>
+              <li>OSS: PrettyFacs/Togglz/DS</li>
+              <li>Blog / Twitter</li>
             </ul>
           </aside>
         </section>
@@ -69,10 +84,12 @@
             <h2>Classic Approach</h2>
           <aside class="notes">
             <ul>
+              <li>Themenfeld: Java EE</li>
               <li>Plattform für Enterprise Apps</li>
-              <li>Middleware</li>
-              <li>Standard APIs</li>
+              <li>Rolle: Middleware</li>
+              <li>Standar. APIs (JPA, JTA, JMS)</li>
               <li>EE 1.0: 1999 = 16y</li>
+              <li>Grundideen tw. sehr alt</li>
               <li>-> App Servers</li>
             </ul>
           </aside>
@@ -82,11 +99,11 @@
           <h1>App Servers</h1>
           <aside class="notes">
             <ul>
-              <li>Versch. Anbieter</li>
-              <li>JBoss Wildfly/EAP, Glassfish, TomEE </li>
-              <li>IBM Websphere, Oracle WebLogic</li>
-              <li>Laufzeitumg. viele Apps</li>
-              <li>-> Bietet Infrastruktur</li>
+              <li>Laufzeitumg. für 1..N Anwend.</li>
+              <li>Std -> Versch. Anbieter</li>
+              <li>Wildfly/EAP, Glassfi., TomEE </li>
+              <li>Websphere, WebLogic</li>
+              <li>-> Hauptaufgabe: Infrastruktur</li>
             </ul>
           </aside>
         </section>
@@ -95,13 +112,12 @@
           <h1>Infrastructure</h1>
           <aside class="notes">
             <ul>
-              <li>Logging</li>
-              <li>Clustering</li>
-              <li>Monitoring</li>
-              <li>2PC TX</li>
-              <li>Configuration</li>
-              <li>Deployment</li>
-              <li>...</li>
+              <li>Viele Aspekte</li>
+              <li>- Configuration, Clustering</li>
+              <li>- Monitoring, Transaktionen</li>
+              <li>- Logging, Deployment</li>
+              <li>Alles was man braucht</li>
+              <li>--> Basis für Anwendungen</li>
             </ul>
           </aside>
         </section>
@@ -111,7 +127,7 @@
           <h2>In 3 steps</h2>
           <aside class="notes">
             <ul>
-              <li>Entwicklungsprozess</li>
+              <li>Einfacher Prozess</li>
               <li>3 Schritte</li>
             </ul>
           </aside>
@@ -136,8 +152,9 @@ public class MyService {
           <aside class="notes">
             <ul>
               <li>Anwendung entwickeln</li>
-              <li>Verwendung der APIs</li>
-              <li>Wenige Abhängigkeiten</li>
+              <li>Verwendung Java EE APIs</li>
+              <li>DI, Pooling, TX, Security</li>
+              <li>Wenige weitere Abh.</li>
             </ul>
           </aside>
         </section>
@@ -164,7 +181,7 @@ $ ls -sh target/*.war
               <li>In Archiv verpacken</li>
               <li>JAR / WAR / EAR</li>
               <li>Maven / Ant</li>
-              <li>Üblicherweise klein</li>
+              <li>Kleine Deployment Unit</li>
             </ul>
           </aside>
         </section>
@@ -177,10 +194,10 @@ $ cp target/myapp.war
           </code></pre>
           <aside class="notes">
             <ul>
-              <li>Deployment</li>
+              <li>Installation in Laufzeitumg. (App Server)</li>
               <li>Häufig "nur" kopieren</li>
               <li>Oder Deployment API</li>
-              <li>Hot Deployment möglich</li>
+              <li>Hot Deployment möglich (aber im Prod nicht oft verwendet)</li>
             </ul>
           </aside>
         </section>
@@ -191,7 +208,11 @@ $ cp target/myapp.war
           <aside class="notes">
             <ul>
               <li>Funktioniert gut</li>
-              <li>-> Aber: Nachteile</li>
+              <li>-> Aber</li>
+              <li>Wenn man ehrlich ist</li>
+              <li>Es ist nicht alles Gold</li>
+              <li>Nachteile</li>
+              <li>Schauen wir uns an</li>
             </ul>
           </aside>
         </section>
@@ -201,11 +222,12 @@ $ cp target/myapp.war
           <aside class="notes">
             <ul>
               <li>Ursache: Wunsch viele Apps</li>
-              <li>Isolation von Apps</li>
-              <li>Und vom Server</li>
+              <li>Isolation von Apps/Server</li>
+              <li>In der Praxis:</li>
               <li>ClassNotFound / ClassCast</li>
               <li>Problemkandidat: EARs</li>
               <li>P: Schwer zu debuggen</li>
+              <li>Obwohl oft nur eine App</li>
             </ul>
           </aside>
         </section>
@@ -229,10 +251,12 @@ $ cp target/myapp.war
           <aside class="notes">
             <ul>
               <li>Argument für AS</li>
-              <li>Updates zur Laufzeit</li>
+              <li>Klingt auch gut</li>
+              <li>-> Updates zur Laufzeit</li>
               <li>Realität schwierig</li>
-              <li>Resource/CL Leaks</li>
+              <li> -> Resource/CL Leaks</li>
               <li>?Wer macht es?</li>
+              <li>Blue/Green Deploy besser</li>
             </ul>
           </aside>
         </section>
@@ -243,10 +267,12 @@ $ cp target/myapp.war
           <aside class="notes">
             <ul>
               <li>App nicht alleine lauffähig</li>
+              <hr/>
               <li>Aufsetzten AS nötig</li>
-              <li>In Prod nicht schlimm</li>
-              <li>Aufwand für Entwickler</li>
-              <li>Buzzword: Microservices</li>
+              <li><strong>Prod:</strong> nicht schlimm</li>
+              <li><strong>Dev:</strong> Mehraufwand</li>
+              <hr/>
+              <li>Buzzword: <strong>Microservices</strong></li>
               <li>Overhead für kleinst Services</li>
             </ul>
           </aside>
@@ -256,7 +282,8 @@ $ cp target/myapp.war
           <h1>Alternatives?</h1>
           <aside class="notes">
             <ul>
-              <li>Klassisch = App Servers</li>
+              <li>So viel Kritik</li>
+              <li>zu <em>klassische App Servers</em></li>
               <li>Was sind Alternativen?</li>
             </ul>
           </aside>
@@ -312,9 +339,10 @@ $ cp target/myapp.war
               <li>Applikation nicht nur Code</li>
               <li>-> Zwei Bestandteile</li>
               <li>Applikationscode + Runtime</li>
+              <hr/>
               <li>Einbetten des Containers</li>
-              <li>Start via main()</li>
-              <li>Self contained</li>
+              <li>Anwendung via main() starten</li>
+              <li>Full self contained</li>
             </ul>
           </aside>
         </section>
@@ -335,8 +363,12 @@ $ cp target/myapp.war
           <aside class="notes">
             <ul>
               <li>Einfachere Welt!</li>
+              <hr/>
               <li>EIN ClassLoader!</li>
               <li>Statische Variablen! :)</li>
+              <li>Keine CL Leaks</li>
+              <li>CNF einfach zu debuggen</li>
+              <hr/>
               <li>Kontrolle über Memory</li>
             </ul>
           </aside>
@@ -347,9 +379,12 @@ $ cp target/myapp.war
           <aside class="notes">
             <ul>
               <li>Flexibilität</li>
-              <li>Komponenten &amp; Versionen</li>
+              <li>Komponenten: benötigt</li>
+              <li>Versionen: Neuste Patches</li>
+              <hr/>
               <li>Updates einfacher</li>
               <li>Kein Mehraufwand beim Deployment</li>
+              <li>Bsp: Wildfly 8.2</li>
             </ul>
           </aside>
         </section>
@@ -359,8 +394,9 @@ $ cp target/myapp.war
           <h1>Setup/Deployment</h1>
           <aside class="notes">
             <ul>
-              <li>Kein Setup des App Servers</li>
-              <li>Lediglich Konfiguration bleibt</li>
+              <li>Anw. + Server = 1 Einheit</li>
+              <li>Kein separates Setup</li>
+              <li>Nur Konfiguration bleibt</li>
             </ul>
           </aside>
         </section>
@@ -370,7 +406,11 @@ $ cp target/myapp.war
           <h1>in your IDE</h1>
           <aside class="notes">
             <ul>
-              <li>Main() Methode starten</li>
+              <li>Schneller Einstieg</li>
+              <hr/>
+              <li>An Anwendung arbeiten</li>
+              <li>1. In IDE importieren</li>
+              <li>2. main() starten</li>
               <li>Keine weiteren Anforderungen</li>
             </ul>
           </aside>
@@ -394,10 +434,11 @@ $ cp target/myapp.war
           <aside class="notes">
             <ul>
               <li>Populär Microservices</li>
-              <li>Spezialisert: REST Services</li>
+              <li><u>Spezialisert:</u> </li>
+              <li>Erstellen von REST Services</li>
               <li>Config, Monitoring, TX</li>
               <li>Jetty, Jersey, Jackson, Hibernate</li>
-              <li>Executable Fat JAR</li>
+              <li><strong>Executable Fat JAR</strong></li>
             </ul>
           </aside>
         </section>
@@ -409,8 +450,8 @@ $ cp target/myapp.war
           <aside class="notes">
             <ul>
               <li>Spring Framework</li>
-              <li>...</li>
-              <li>Executable Fat JAR</li>
+              <li>Kompletter Stack</li>
+              <li><strong>Executable Fat JAR</strong></li>
             </ul>
           </aside>
         </section>
@@ -436,8 +477,11 @@ $ cp target/myapp.war
           <aside class="notes">
             <ul>
               <li>Ziel: JavaEE APIs</li>
-              <li>Web Profile</li>
+              <li>Web Profile ähn. Umgeb.</li>
+              <hr/>
               <li>-> Ziel *fast* erreicht</li>
+              <li>Übersicht Specs</li>
+              <hr/>
               <li>Natürlich nicht selfmade</li>
               <li>-> Bewährte Project</li>
             </ul>
@@ -452,7 +496,10 @@ $ cp target/myapp.war
           </h3>
           <aside class="notes">
             <ul>
+              <li>Dank an die Projekte</li>
+              <hr/>
               <li>Aufgabe: Integration</li>
+              <hr/>
               <li>Modularität</li>
               <li>Pick what you want</li>
               <li>Beispiel: JSF mit/ohne CDI</li>
@@ -474,9 +521,12 @@ $ java -jar target/myapp.jar
           <aside class="notes">
             <ul>
               <li>Ziel: Executable Fat JAR</li>
-              <li>Beispiel...</li>
+              <li>Vorteil: Single Deploy Unit</li>
+              <hr/>
               <li>Herausforderung:</li>
               <li>Gleiche Files (beans.xml)</li>
+              <li>Durch Backset gelöst</li>
+              <li>maven-shade-plugin</li>
             </ul>
           </aside>
         </section>
@@ -496,9 +546,12 @@ logging:
           </code></pre>
           <aside class="notes">
             <ul>
-              <li>Konfiguration</li>
-              <li>YAML Files</li>
-              <li>Eigene Einträge möglich</li>
+              <li>Einfache Konfiguration</li>
+              <li>YAML Datei</li>
+              <li>Bearb. einfach (vs XML)</li>
+              <hr/>
+              <li>Eigene Sections möglich</li>
+              <hr/>
               <li>Classpath Default</li>
               <li>Optionales Argument</li>
             </ul>
@@ -512,6 +565,13 @@ logging:
         <section>
           <h2>Keep an eye on</h2>
           <h1>Apache TomEE</h1>
+          <aside class="notes">
+            <ul>
+              <li>Interessante Entwicklung</li>
+              <li>Wenig Dokumentation</li>
+              <li>Aber viel versprechend</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -529,6 +589,13 @@ public class MyApp {
 
 }
           </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Beschreibt Abhängig.</li>
+              <li>Beschreibt Deployment</li>
+              <li>Direkt ausführbar</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
